@@ -3,15 +3,15 @@
 #ADD target/encrypt-decrypt-json.jar encrypt-decrypt-json.jar
 #ENTRYPOINT ["java","-jar","/encrypt-decrypt-json.jar"]
 
-# Use Amazon Corretto 17 as the base image
-FROM amazoncorretto:17-alpine
+# Stage 1: Build the application
+FROM maven:3.9.6-amazoncorretto-17 AS build
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Copy the jar file from your target folder
-# Using COPY is generally preferred over ADD for local files
-COPY target/encrypt-decrypt-json.jar encrypt-decrypt-json.jar
-
-# Expose the port the app runs on
+# Stage 2: Create the runtime image
+FROM amazoncorretto:17-alpine-jdk
 EXPOSE 8080
-
-# Run the application
-ENTRYPOINT ["java", "-jar", "encrypt-decrypt-json.jar"]
+# Copy the jar from the 'build' stage.
+# NOTE: Ensure 'ecsfargate.jar' matches the <finalName> in your pom.xml
+COPY --from=build /target/*.jar encrypt-decrypt-json.jar
+ENTRYPOINT ["java", "-jar", "/encrypt-decrypt-json.jar"]
