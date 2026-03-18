@@ -7,4 +7,4 @@ aws:
     decrypted: decrypt-s3-bucket-18032026
 
   kms:
-    key: alias/json-encryption-key
+    key: arn:aws:kms:us-east-1:887989406975:key/5d38cdc6-d71d-4c77-bc4c-acf47e74351d
