@@ -12,14 +12,14 @@ public class AwsConfig {
     @Bean
     public S3Client s3Client() {
         return S3Client.builder()
-                .region(Region.EU_NORTH_1)
+                .region(Region.AP_SOUTH_1)
                 .build();
     }
 
     @Bean
     public KmsClient kmsClient() {
         return KmsClient.builder()
-                .region(Region.EU_NORTH_1)
+                .region(Region.AP_SOUTH_1)
                 .build();
     }
 }

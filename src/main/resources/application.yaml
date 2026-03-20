@@ -1,10 +1,10 @@
 aws:
-  region: eu-north-1
+  region: ap-south-1
 
   bucket:
-    input: upload-s3-bucket-18032026
-    encrypted: encrypt-s3-bucket-18032026
-    decrypted: decrypt-s3-bucket-18032026
+    input: upload-s3-bucket-18032026-1
+    encrypted: encrypt-s3-bucket-18032026-1
+    decrypted: decrypt-s3-bucket-18032026-1
 
   kms:
-    key: arn:aws:kms:us-east-1:887989406975:key/5d38cdc6-d71d-4c77-bc4c-acf47e74351d
+    key: alias/ecrypt-decrypt-json-kms
