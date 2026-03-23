@@ -1,0 +1,10 @@
+aws:
+  region: eu-north-1
+
+  bucket:
+    input: upload-s3-bucket-878767
+    encrypted: encrypt-s3-bucket-878767
+    decrypted: decrypt-s3-bucket-878767
+
+  kms:
+    key: alias/json-encryption-key
